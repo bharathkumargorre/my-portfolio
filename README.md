@@ -28,7 +28,7 @@ Deployed on [Vercel] https://my-portfolio-mju1rfv09-bharathkumar08052004.vercel.
 ## 📬 Contact
 - Email: bharathkumar08052004@gmail.com
 - GitHub: [bharathkumargorre](https://github.com/bharathkumargorre)
-- LinkedIn: [bharath-kumar](https://linkedin.com/in/bharath-kumar)
+- LinkedIn: [bharath-kumar](https://linkedin.com/in/bharathkumargorre)
 
 ---
-© 2026 G.Bharath Kumar. All Rights Reserved.
+© G.Bharath Kumar. All Rights Reserved.
