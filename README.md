@@ -1,9 +1,9 @@
-# Bharath Kumar — Portfolio
+# G.Bharath Kumar — Portfolio
 
 A modern, dark-themed personal portfolio website built with pure HTML, CSS, and JavaScript.
 
 ## 🔗 Live Demo
-[View Portfolio] (https://my-portfolio-mju1rfv09-bharathkumar08052004.vercel.app)
+[View Portfolio](https://my-portfolio-mju1rfv09-bharathkumar08052004.vercel.app)
 
 ## 📌 Sections
 - Hero
@@ -23,7 +23,7 @@ A modern, dark-themed personal portfolio website built with pure HTML, CSS, and 
 - Google Fonts (Inter, Bebas Neue)
 
 ## 🚀 Deployment
-Deployed on [Vercel] (https://my-portfolio-mju1rfv09-bharathkumar08052004.vercel.app)
+Deployed on [Vercel](https://my-portfolio-mju1rfv09-bharathkumar08052004.vercel.app)
 
 ## 📬 Contact
 - Email: bharathkumar08052004@gmail.com
