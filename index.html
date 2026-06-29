@@ -1130,6 +1130,337 @@
 
 <body>
 
+  <!-- ══════════════════════════════════════════════════════════
+     WELCOME INTRO ANIMATION  ·  G.Bharath Kumar
+     Paste this block RIGHT AFTER your opening <body> tag
+     inside  /public/index.html
+     Plays once per session, then auto-removes itself.
+     Click / Tap anywhere to skip.
+══════════════════════════════════════════════════════════ -->
+
+  <style id="bkg-css">
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    #bkg-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #0a0d12;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    #bkg-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .15;
+    }
+
+    #bkg-scan {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      top: 0;
+      background: linear-gradient(90deg, transparent, #4ff0b0, transparent);
+      box-shadow: 0 0 28px 6px rgba(79, 240, 176, .65);
+      animation: bkgScan 1.1s cubic-bezier(.4, 0, .2, 1) forwards;
+    }
+
+    @keyframes bkgScan {
+      0% {
+        top: -2px
+      }
+
+      100% {
+        top: 100%
+      }
+    }
+
+    #bkg-pt,
+    #bkg-pb {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: #0a0d12;
+      z-index: 2;
+      transition: transform .9s cubic-bezier(.76, 0, .24, 1);
+    }
+
+    #bkg-pt {
+      top: 0;
+    }
+
+    #bkg-pb {
+      bottom: 0;
+    }
+
+    #bkg-pt.go {
+      transform: translateY(-100%);
+    }
+
+    #bkg-pb.go {
+      transform: translateY(100%);
+    }
+
+    #bkg-flash {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      background: #fff;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .08s ease;
+    }
+
+    #bkg-flash.pop {
+      opacity: .15;
+    }
+
+    #bkg-c {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .9rem;
+      transition: opacity .45s ease;
+    }
+
+    #bkg-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      color: #4ff0b0;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: bkgFade .5s .25s both;
+    }
+
+    #bkg-w {
+      display: flex;
+      gap: .01em;
+      line-height: 1;
+    }
+
+    .bkg-l {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3.8rem, 13vw, 9.5rem);
+      font-weight: 800;
+      color: #e2e8f0;
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(-90px) rotate(-12deg);
+      animation: bkgDrop .55s cubic-bezier(.34, 1.56, .64, 1) both;
+    }
+
+    .bkg-l.g {
+      color: #4ff0b0;
+      text-shadow: 0 0 60px rgba(79, 240, 176, .45);
+    }
+
+    @keyframes bkgDrop {
+      to {
+        opacity: 1;
+        transform: translateY(0) rotate(0);
+      }
+    }
+
+    #bkg-sub {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1rem, 4vw, 2rem);
+      font-weight: 700;
+      color: rgba(255, 255, 255, .45);
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(28px);
+      animation: bkgRise .65s ease both;
+    }
+
+    @keyframes bkgRise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #bkg-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      color: #4ff0b0;
+      letter-spacing: .14em;
+      opacity: 0;
+      animation: bkgFade .5s both;
+    }
+
+    #bkg-bw {
+      width: 200px;
+      height: 1px;
+      background: #1e2535;
+      overflow: hidden;
+      border-radius: 1px;
+    }
+
+    #bkg-b {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #4ff0b0, #3b82f6);
+      animation: bkgBar 2.6s .7s ease-out both;
+    }
+
+    @keyframes bkgBar {
+      to {
+        width: 100%;
+      }
+    }
+
+    #bkg-st {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem;
+      color: #334155;
+      letter-spacing: .22em;
+      opacity: 0;
+      animation: bkgFade .4s both;
+    }
+
+    #bkg-skip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .6rem;
+      color: #1e293b;
+      letter-spacing: .12em;
+      animation: bkgBlink 1.6s 1.2s infinite;
+    }
+
+    @keyframes bkgBlink {
+
+      0%,
+      100% {
+        opacity: .3
+      }
+
+      50% {
+        opacity: .9
+      }
+    }
+
+    @keyframes bkgFade {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <div id="bkg-intro">
+    <canvas id="bkg-canvas"></canvas>
+    <div id="bkg-scan"></div>
+    <div id="bkg-pt"></div>
+    <div id="bkg-pb"></div>
+    <div id="bkg-flash"></div>
+
+    <div id="bkg-c">
+      <div id="bkg-role" style="animation-delay:.25s">Full Stack · AI Developer</div>
+
+      <div id="bkg-w">
+        <span class="bkg-l g" style="animation-delay:.65s">W</span>
+        <span class="bkg-l" style="animation-delay:.78s">E</span>
+        <span class="bkg-l" style="animation-delay:.91s">L</span>
+        <span class="bkg-l" style="animation-delay:1.04s">C</span>
+        <span class="bkg-l g" style="animation-delay:1.17s">O</span>
+        <span class="bkg-l" style="animation-delay:1.30s">M</span>
+        <span class="bkg-l" style="animation-delay:1.43s">E</span>
+      </div>
+
+      <div id="bkg-sub" style="animation-delay:1.85s">to my world</div>
+      <div id="bkg-name" style="animation-delay:2.35s">— G.Bharath Kumar —</div>
+
+      <div id="bkg-bw">
+        <div id="bkg-b"></div>
+      </div>
+      <div id="bkg-st" style="animation-delay:2.9s">LOADING PORTFOLIO...</div>
+      <div id="bkg-skip">TAP ANYWHERE TO SKIP</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var OV = document.getElementById('bkg-intro');
+      var CSS = document.getElementById('bkg-css');
+
+      /* Skip if already seen this browser session */
+      if (sessionStorage.getItem('bkg_seen')) {
+        OV.remove(); CSS.remove(); return;
+      }
+
+      /* Matrix rain */
+      var cv = document.getElementById('bkg-canvas');
+      var ctx = cv.getContext('2d');
+      cv.width = window.innerWidth;
+      cv.height = window.innerHeight;
+      var cols = Math.floor(cv.width / 20);
+      var drops = [];
+      for (var i = 0; i < cols; i++) drops[i] = Math.random() * -40;
+      var CHARS = '01アイウエカキサタチBGKRSTACK<>{}[]BharathKumarFullStack';
+
+      var rainID = setInterval(function () {
+        ctx.fillStyle = 'rgba(10,13,18,.1)';
+        ctx.fillRect(0, 0, cv.width, cv.height);
+        ctx.fillStyle = '#4ff0b0';
+        ctx.font = '13px monospace';
+        for (var j = 0; j < drops.length; j++) {
+          var ch = CHARS[Math.floor(Math.random() * CHARS.length)];
+          ctx.globalAlpha = Math.random() * .6 + .2;
+          ctx.fillText(ch, j * 20, drops[j] * 20);
+          if (drops[j] * 20 > cv.height && Math.random() > .95) drops[j] = 0;
+          drops[j]++;
+        }
+        ctx.globalAlpha = 1;
+      }, 55);
+
+      /* Exit sequence */
+      var exited = false;
+      function exit() {
+        if (exited) return;
+        exited = true;
+        clearInterval(rainID);
+
+        /* 1. Fade content out */
+        document.getElementById('bkg-c').style.opacity = '0';
+
+        /* 2. White flash at split moment */
+        setTimeout(function () {
+          var fl = document.getElementById('bkg-flash');
+          fl.classList.add('pop');
+          setTimeout(function () { fl.classList.remove('pop'); }, 120);
+        }, 380);
+
+        /* 3. Curtain split */
+        setTimeout(function () {
+          document.getElementById('bkg-pt').classList.add('go');
+          document.getElementById('bkg-pb').classList.add('go');
+        }, 400);
+
+        /* 4. Remove from DOM */
+        setTimeout(function () {
+          OV.remove(); CSS.remove();
+          sessionStorage.setItem('bkg_seen', '1');
+        }, 1400);
+      }
+
+      OV.addEventListener('click', exit);
+      OV.addEventListener('touchstart', exit, { passive: true });
+      setTimeout(exit, 4300);
+    })();
+  </script>
+
+  <!-- END WELCOME INTRO -->
+
   <nav>
     <div class="logo">Bharath<span>Kumar</span></div>
     <div class="nav-links">
